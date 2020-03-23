@@ -136,12 +136,17 @@ class CsvReader extends AbstractCsv implements \Iterator
     }
 
     function fetch_pair($offset,$count){
-        $this->validateLineBreak();
+        //$this->validateLineBreak();
         if($offset > 0){
-            fgetcsv($this->filePointer(),$offset,$this->getDelimiter(),$this->getEnclosure(),$this->getEscapedBy());
+            for ($i = 0; $i<$offset;$i++){
+                $this->readLine();
+            }
             $this->set_rowcount($offset);
         }
-        $data = fgetcsv($this->filePointer(),$count,$this->getDelimiter(),$this->getEnclosure(),$this->getEscapedBy());
+        $data = array();
+        for ($i = 0; $i<$count;$i++){
+            $data[] = $this->readLine();
+        }
         $this->set_rowcount($offset+$count);
         return $data;
     }
