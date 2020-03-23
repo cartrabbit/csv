@@ -2,7 +2,7 @@
   "name": "cartrabbit/csv",
   "description": "Csv Reader / Writer",
   "type": "project",
-  "license": "GPL3 or Later",
+  "license": "GPL-3.0-or-later",
   "authors": [
     {
       "name": "Alagesan S",
